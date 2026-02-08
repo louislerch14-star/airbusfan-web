@@ -1,0 +1,537 @@
+/* Für Chrome, Edge und Safari */
+::-webkit-scrollbar {
+    width: 12px; /* Breite des Scrollbalkens */
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a; /* Hintergrund der Scroll-Leiste (passend zum dunklen Hintergrund) */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D4A017; /* Dein Dunkelgelb für den Balken selbst */
+    border-radius: 10px; /* Schön abgerundet */
+    border: 3px solid #1a1a1a; /* Erzeugt einen kleinen Abstand zum Rand */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FFD700; /* Leuchtet etwas heller beim Drüberfahren (Gold) */
+}
+
+
+
+/*Home*/
+
+#zeitplan-box {
+    max-width: 500px;
+    background: rgba(26, 26, 26, 0.9);
+    border: 3px solid #D4A017;
+    border-radius: 15px;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px 0;
+}
+
+#zeitplan-header {
+    background: #D4A017;
+    color: #1a1a1a;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+#zeitplan-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+#zeitplan-tabelle th {
+    background: #333;
+    font-size: 0.8rem;
+    padding: 10px;
+    text-align: left;
+    color: #D4A017;
+}
+
+#zeitplan-tabelle td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #444;
+    font-size: 0.9rem;
+}
+
+/* Status-Farben */
+#status-on {
+    color: #00FF00; /* Leuchtendes Grün für Online */
+    font-weight: bold;
+}
+
+.status-off {
+    color: #FFD700; /* Gold/Gelb für Standby */
+    font-weight: bold;
+}
+
+#zeitplan-footer {
+    padding: 10px;
+    font-size: 0.7rem;
+    color: #888;
+    text-align: center;
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    
+    /* Das Hintergrundbild festgetackert */
+    background-image: 
+        linear-gradient(rgba(50, 50, 50, 0.7), rgba(60, 60, 60, 0.7)), /* Die graue Schicht */
+        url('/pic/dlh3.jpg'); /* Dein Bild */
+    
+    background-size: cover;        /* Bild füllt alles aus */
+    background-position: center;   /* Bild ist zentriert */
+    background-attachment: fixed;  /* Das Bild bewegt sich beim Scrollen NICHT */
+    background-repeat: no-repeat;
+  position: relative;
+}
+#Homeh1{
+  margin-top:60px;
+  text-align:center;
+  color:#FFBF00;
+  font-size:60px;
+
+}
+#Homep{
+  text-align:center;
+  font-size:25px;
+  color:#D3D3D3;
+}
+
+/* Das Icon oben links festtackern */
+#menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    color: #D3D3D3; /* Dein helles Grau */
+    cursor: pointer;
+    z-index: 1001; /* Damit es immer über der Sidebar liegt */
+}
+
+/* Die Sidebar Grundeinstellungen */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Startet außerhalb des Bildschirms */
+    width: 250px;
+    height: 100%;
+    background: rgba(40, 40, 40, 0.85); /* Transparentes Grau */
+    backdrop-filter: blur(10px); /* Schicker Milchglas-Effekt */
+    transition: 0.4s ease; /* Die Geschwindigkeit der Animation */
+    z-index: 1000;
+    padding-top: 80px;
+}
+
+/* Wenn die Sidebar aktiv ist, schiebe sie rein */
+#sidebar.active {
+    left: 0;
+}
+
+/* Styling für die Links in der Sidebar */
+#sidebar nav a {
+    display: block;
+    padding: 15px 25px;
+    color: #D3D3D3;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+#sidebar nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #D4A017; /* Dein dunkles Gelb beim Drüberfahren */
+}
+/* Das Overlay-Feld */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dunkelt den Rest der Seite leicht ab */
+    display: none; /* Standardmäßig weg */
+    z-index: 999;  /* Hinter der Sidebar, aber über dem Rest */
+}
+
+/* Wenn die Sidebar aktiv ist, zeige das Overlay */
+#sidebar.active + .overlay {
+    display: block;
+}
+
+/* Falls du die Sidebar-Klasse manuell per JS steuerst, 
+   kannst du das Overlay auch einfach über eine eigene Klasse einblenden: */
+#spotlight-box {
+    background: rgba(45, 45, 45, 0.7); 
+    border: 3px solid #D4A017; 
+    border-radius: 15px;
+    
+    /* 20% größer und nach links ausgerichtet */
+    max-width: 385px; 
+    margin: 40px 0; /* Oben/Unten 40px, Links 0 */
+    
+    overflow: hidden; /* Wichtig für den Zoom-Effekt am Rand */
+    backdrop-filter: blur(10px);
+}
+
+/* Der Container für das Bild muss den Überhang verstecken */
+#spotting-img {
+    width: 100%;
+    height: 220px; /* Auch etwas höher gemacht */
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.5s ease; /* Macht das Zoomen weich */
+    cursor: pointer;
+}
+
+/* ZOOM-EFFEKT: Wenn man mit der Maus drüber geht */
+#spotting-img:hover {
+    transform: scale(1.1); /* Zoomt um 10% rein */
+}
+
+#badge {
+  	
+    background: #D4A017;
+    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+#spotting-info {
+    padding: 15px;
+}
+
+#spotting-title {
+    margin: 0;
+    font-size: 18px; /* Etwas größere Schrift passend zur Box */
+    color: #D4A017;
+}
+
+#spotting-text {
+    margin: 5px 0 0;
+    font-size: 15px;
+    color: #F5F5F5;
+}
+
+#tiktok-container-offiziell {
+    max-width: 385px; /* Gleiche Breite wie deine Catch-Box */
+    border: 3px solid #D4A017; /* Dein Dunkelgelb */
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 20px 0; /* Nach links ausgerichtet */
+    background: white; /* TikTok Embeds sind meist weiß, das sieht sauberer aus */
+}
+
+#tiktok-label-oben {
+    background: #D4A017;
+    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Damit das Script von TikTok nicht über den Rand hinausragt */
+#tiktok-embed {
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+}
+
+
+#seiten-text {
+    /* Positionierung */
+    position: absolute;
+    top: 200px;       /* Gleiche Höhe wie der Start deiner Boxen */
+    left: 1050px;      /* Platz lassen für deine Boxen (385px + Abstand) */
+    
+    /* Design */
+    max-width: 420px;
+    color: #F5F5F5;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#seiten-text h2 {
+    color: #D4A017;
+    text-transform: normal;
+    
+}
+
+#seiten-text p {
+    line-height: 1.6;
+    font-size: 20px;
+}
+
+/* WICHTIG: Auf dem Handy muss der Text unter die Boxen */
+@media (max-width: 800px) {
+    #seiten-text {
+        position: static; /* Hebt die absolute Positionierung auf */
+        margin: 20px 0;
+        max-width: 385px;
+    }
+}
+
+#equipment-box {
+    background: rgba(45, 45, 45, 0.7); 
+    border: 3px solid #D4A017; 
+    border-radius: 15px;
+    max-width: 385px; 
+    margin: 20px 0;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+#equipment-badge {
+    background: #D4A017;
+    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+}
+
+#equipment-content {
+    padding: 15px;
+}
+
+#gear-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #F5F5F5;
+}
+
+#gear-item i {
+    color: #D4A017;
+    width: 30px;
+    font-size: 1.2rem;
+}
+
+
+
+
+#radar-box {
+    max-width: 385px; 
+    border: 3px solid #D4A017; 
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 20px 0;
+    background: #1a1a1a;
+  position: absolute;
+    top: 550px;       /* Gleiche Höhe wie der Start deiner Boxen */
+    left: 700px;
+}
+
+#radar-frame {
+    border: none;
+    display: block;
+    /* Ein kleiner Trick: Wir filtern die Karte leicht, 
+       damit sie dunkler und edler wirkt */
+    filter: brightness(0.8) contrast(1.2);
+}
+#radar-badge {
+    background: #D4A017;
+    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+}
+#radar-box {
+    max-width: 800px; /* Hier kannst du den Wert beliebig anpassen, z.B. 800px oder 100% */
+    width: 100%;      
+    margin: 20px 0;   
+    border: 3px solid #D4A017; 
+    border-radius: 15px;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+/* Damit die Karte innerhalb der Box auch wirklich den Platz nutzt */
+#radar-frame {
+    width: 100%;
+    height: 500px; /* Mehr Breite verträgt auch mehr Höhe für die Übersicht */
+    border: none;
+    display: block;
+}
+
+
+
+/*Planespotting*/
+
+
+#bilder-page {
+    /* Pfad zu deinem neuen Hintergrundbild */
+    background-image: url('/pic/pgs1.jpg'); 
+    
+    /* Bild wird fest fixiert und füllt den ganzen Schirm */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Ein dunkler Overlay, damit man deine Bilder-Boxen besser sieht */
+    background-color: rgba(0, 0, 0, 0.6); 
+    background-blend-mode: overlay;
+    
+    margin: 0;
+    padding: 0;
+}
+#Bilderh1{
+  margin-top:60px;
+  text-align:center;
+  color:#FFBF00;
+  font-size:60px;
+}
+#Bilderp{
+  text-align:center;
+  font-size:25px;
+  color:#D3D3D3;
+}
+
+
+#galerie-master {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.flugzeug-gruppe {
+    background: rgba(20, 20, 20, 0.8);
+    border: 2px solid #D4A017;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 50px; /* Abstand zum nächsten Flugzeug */
+    backdrop-filter: blur(5px);
+}
+
+.flugzeug-titel {
+    color: #D4A017;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    border-left: 5px solid #D4A017;
+    padding-left: 15px;
+}
+
+.triple-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Bilder nebeneinander */
+    gap: 15px;
+}
+
+.bild-wrapper {
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+.bild-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.bild-wrapper img:hover {
+    transform: scale(1.1);
+}
+
+.bild-info-unten {
+    margin-top: 15px;
+    color: #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.divider {
+    color: #D4A017;
+    margin: 0 10px;
+}
+
+/* Mobile Ansicht */
+@media (max-width: 800px) {
+    .triple-grid {
+        grid-template-columns: 1fr; /* Untereinander auf dem Handy */
+    }
+}
+
+#upload-section {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(26, 26, 26, 0.9);
+    border: 3px solid #D4A017;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#upload-titel {
+    color: #D4A017;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+#upload-info {
+    color: #ccc;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 25px;
+}
+
+#button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Gemeinsame Styles für beide Buttons per ID-Aufzählung */
+#btn-mail-einsenden, 
+#btn-discord-einsenden {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s;
+}
+
+/* Spezielle Farbe für den Mail-Button */
+#btn-mail-einsenden {
+    background-color: #D4A017;
+    color: #1a1a1a;
+}
+
+#btn-mail-einsenden:hover {
+    background-color: #FFD700;
+    transform: translateY(-3px);
+}
+
+/* Spezielle Farbe für den Discord-Button */
+#btn-discord-einsenden {
+    background-color: #5865F2;
+    color: white;
+}
+
+#btn-discord-einsenden:hover {
+    background-color: #4752c4;
+    transform: translateY(-3px);
+}

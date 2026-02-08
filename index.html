@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Airbus Fan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="Homeh1">Startseite</h1>
+  <p id="Homep">Moin, ich bin Airbusfan. Wilkommen auf meiner Webseite.</p>
+  
+  
+  <div id="menu-icon" onclick="toggleSidebar()">☰</div>
+  
+
+<div id="sidebar" class="sidebar">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="uebermich.html">Über mich</a>
+        <a href="bilder.html">Bilder</a>
+        <a href="twitch.html">Twitch</a>
+    </nav>
+  <nav>
+    <a href="https://discord.com/users/1125312926291591178" target="_blank">
+        <i class="fab fa-discord"></i> Discord
+    </a>
+</nav>
+</div>
+  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+<div id="sidebar" class="sidebar">
+    </div>
+  <script>
+function toggleSidebar() {
+    // Sidebar umschalten
+    document.getElementById('sidebar').classList.toggle('active');
+    // Overlay umschalten
+    document.getElementById('overlay').classList.toggle('active');
+}
+</script>
+  <div id="zeitplan-box">
+    <div id="zeitplan-header">
+        <i class="fas fa-clock"></i> BETRIEBSZEITEN
+    </div>
+    <table id="zeitplan-tabelle">
+        <thead>
+            <tr>
+                <th>WOCHENTAG</th>
+                <th>STATUS</th>
+                <th>ZEITRAUM</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MONTAG</td>
+                <td id="status-on">ONLINE</td>
+                <td>09:00 - 20:00</td>
+            </tr>
+            <tr>
+                <td>MITTWOCH</td>
+                <td id="status-on">ONLINE</td>
+                <td>09:00 - 20:00</td>
+            </tr>
+            <tr>
+                <td>FREITAG</td>
+                <td id="status-on">ONLINE</td>
+                <td>10:00 - 22:00</td>
+            </tr>
+          <tr>
+            <td>SAMSTAG</td>
+            <td id="status-on">ONLINE</td>
+            <td>13:00 - 22:00</td>
+          </tr>
+        </tbody>
+    </table>
+    <div id="zeitplan-footer">
+        * Außerhalb dieser Zeiten befindet sich der Server im Standby.
+    </div>
+</div>
+  
+<div id="spotlight-box">
+    <div id="badge">Letzter Catch</div>
+    <a href="/pic/dlh743.jpg" target="_blank">
+        <img src="/pic/dlh743.jpg" alt="Letztes Flugzeug" id="spotting-img">
+    </a>
+    <div id="spotting-info">
+        <h3 id="spotting-title">Lufthansa Boeing 747-800</h3>
+        <p id="spotting-text">Abflughafen: Frankfurt (FRA)</p>
+    </div>
+</div>
+  
+ <div id="tiktok-container-offiziell">
+    <div id="tiktok-label-oben">Mein Profil</div>
+    
+    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@airbus_fan_" data-unique-id="airbus_fan_" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > 
+        <section> 
+            <a target="_blank" href="https://www.tiktok.com/@airbus_fan_?refer=creator_embed">@airbus_fan_</a> 
+        </section> 
+    </blockquote> 
+    <script async src="https://www.tiktok.com/embed.js"></script>
+</div>
+  
+<div id="seiten-text">
+  <h2>Über die Seite</h2>
+  <p>
+    Moin! Ich bin Airbusfan und heiße dich herzlich willkommen auf meiner Seite.
+Auf dieser Seite nehme ich dich mit in meine Foto Galerie.
+    Hier findest du meine aktuellsten Bilder. Schau dich um, genieß die Aussicht und lass uns die Faszination Fliegen gemeinsam teilen!
+  </p>
+</div>
+    
+  
+  <div id="equipment-box">
+    <div id="equipment-badge">Mein Equipment</div>
+    <div id="equipment-content">
+        <div id="gear-item">
+            <i class="fas fa-camera"></i>
+            <span>Canon EOS 250D</span>
+        </div>
+        <div id="gear-item">
+            <i class="fas fa-eye"></i>
+            <span>Canon 75mm-300mm</span>
+        </div>
+        <div id="gear-item">
+            <i class="fas fa-laptop"></i>
+            <span>Darktable</span>
+        </div>
+    </div>
+</div>
+  
+  
+  <div id="radar-box">
+    <div id="radar-badge">Live Luftraum</div>
+    <iframe id="radar-frame" 
+        src="https://globe.adsbexchange.com/?lat=53.047&lon=8.786&zoom=7&hideSidebar&hideBottomBar" 
+        width="100%" height="400">
+    </iframe>
+</div>
+</body>
+</html>
